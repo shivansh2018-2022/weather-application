@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>WEATHER TRACKER</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
+</head>
+<body >
+    <div class = "box">
+    <h1 class="user">Weather details of your locale</h1>
+    <form id="myForm" method="post">
+        
+        <label for="latInput">latitude:</label>
+        <input type="text" id="latInput" name="latitude">
+
+        <label for="longInput">longitude:</label>
+        <input type="text" id="longInput" name="longitude"> </br>
+
+        <label for="submit"></label>
+        <input class="btn btn-success bttn" id="get" type="submit" value="FETCH DETAILS" formaction="/get-secret">
+    </form>
+    
+    <% if(locals.time){ %>
+    <ul>
+        <li>DATE : <%= time %></li>
+        <li>MAXIMUM TEMPERATURE : <%= max_temp %> °celsius</li>
+        <li>MINIMUM TEMPERATURE : <%= min_temp %>°celsius</li>
+        <li>UV INDEX : <%= uv %>(11+ is considered very harmful)</li>
+        <li>RAINFALL : <%= precipitation %>mm</li>
+        <li>WINDSPEED : <%= windspeed %>km/hr</li>
+    </ul>
+    <% } %>
+    <% if(locals.error){ %>
+        <h2>enter correct coordinates</h2>
+    <% } %>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
